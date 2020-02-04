@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: compute
+  name: compute
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: compute
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: compute
+    spec:
+      containers:
+      - name: compute
+        image: gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5
+        resources:
+          limits:
+            cpu: "700m"
+            memory: "500Mi"
+          requests:
+            cpu: "500m"
+            memory: "250Mi"
