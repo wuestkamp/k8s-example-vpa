@@ -9,10 +9,12 @@ If some of the Prometheus queries are not working for you it might be because of
 
 ## run yourself
 
-### You need a cluster, like with Gcloud:
+### You need a cluster with VPA enabled, like with Gcloud:
 ```
-gcloud container clusters create resources --num-nodes 3 --zone europe-west3-b --machine-type n1-standard-2 --enable-vertical-pod-autoscaling
+gcloud container clusters create resources --num-nodes 3 --zone europe-west3-b --machine-type n1-standard-2 --node-version=1.15 --cluster-version=1.15 --enable-vertical-pod-autoscaling
 ```
+Or you install the VPA CRDs manually in your cluster.
+
 
 ### Install helm repos:
 Helmfile is used for managing helm repos.
@@ -55,8 +57,8 @@ Go to http://localhost:3000/dashboard/import and import the dashboard from `i/gr
 ```
 kubectl run curl --image=curlimages/curl --rm --restart=Never -it sh
 
-# use cluster internal compute pod IP
-curl --data "millicores=400&durationSec=3600" 10.12.0.11:8080/ConsumeCPU
+curl --data "millicores=400&durationSec=300" compute:8080/ConsumeCPU
+curl --data "megabytes=400&durationSec=300" compute:8080/ConsumeMem
 ```
 
 
