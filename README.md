@@ -1,6 +1,6 @@
 # Kubernetes Vertical Pod Autoscaler by example
 
-Medium article: TODO
+Medium article: https://medium.com/@wuestkamp/k8s-vertical-pod-autoscaling-fd9e602cbf81?source=friends_link&sk=df7289cb35bcfdfa7f191546e6d555b6
 
 **NOTICE**
 If some of the Prometheus queries are not working for you it might be because of `pod_name` or `container_name` have been renamed to `pod` and `container` in other metrics-server version.
